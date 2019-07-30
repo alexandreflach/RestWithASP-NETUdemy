@@ -11,14 +11,66 @@ namespace RestWithASPNETUdemy.Controllers
     public class CalculatorController : ControllerBase
     {
         // GET api/values/5
-        [HttpGet("{firstNumber}/{secondNumber}")]
-        public ActionResult<string> Get(string firstNumber, string secondNumber)
+        [HttpGet("sum/{firstNumber}/{secondNumber}")]
+        public ActionResult<string> Sum(string firstNumber, string secondNumber)
         {
             if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
                 var sum = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
                 return Ok(sum.ToString())
 ;            }
+
+            return BadRequest("invalid input");
+        }
+
+        [HttpGet("subtraction/{firstNumber}/{secondNumber}")]
+        public ActionResult<string> Subtraction(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var sum = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+                return Ok(sum.ToString())
+;
+            }
+
+            return BadRequest("invalid input");
+        }
+
+        [HttpGet("mean/{firstNumber}/{secondNumber}")]
+        public ActionResult<string> Mean(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var sum = (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber)) / 2;
+                return Ok(sum.ToString())
+;
+            }
+
+            return BadRequest("invalid input");
+        }
+
+        [HttpGet("division/{firstNumber}/{secondNumber}")]
+        public ActionResult<string> Division(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var sum = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(sum.ToString())
+;
+            }
+
+            return BadRequest("invalid input");
+        }
+
+        [HttpGet("multiplication/{firstNumber}/{secondNumber}")]
+        public ActionResult<string> Multiplication(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var sum = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                return Ok(sum.ToString())
+;
+            }
 
             return BadRequest("invalid input");
         }
